@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base.html'}
 
 {% block title %}
 <title>QuidProQuo - Create Your Profile</title>
@@ -10,15 +10,6 @@
 <div>
     <form method='POST' action=''>
         {{ form.hidden_tag() }}
-        {{ form.user_name.label}}
-        {{ form.user_name }}
-        {% if form.user_name.errors %}
-        <div>{{ error }}</div>
-        {% endif %}
-        <br>
-        {{ form.password.label}}
-        {{ form.password }}
-        <br>
         {{ form.property.label}}
         {{ form.property }}
         <br>
@@ -30,5 +21,9 @@
         <br>
         {{ form.submit }}
     </form> 
+</div>
+<br>
+<div>
+    <a href="{{url_for('delete_entry', property=property, cash=cash, investments=investments )}}"><button type="button">Delete this Entry</button></a>
 </div>
 {% endblock %}

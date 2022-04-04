@@ -1,19 +1,20 @@
-{% extends 'base.html' %}
+{% extends 'base.html'}
 
 {% block title %}
 <title>QuidProQuo - Add the Details of Your Debt</title>
 {% endblock %}
 
 {% block content %}
-<h1>Add Details of Your Debt</h1>
+<h1>Add the Details of Your Debt</h1>
 <br>
 <div>
     <form method='POST' action=''>
         {{ form.hidden_tag() }}
         {{ form.lender.label}}
         {{ form.lender }}
-        {% if form.user_name.errors %}
+        {% if form.user_name.errors}
         <div>{{ error }}</div>
+        {% endfor %}
         {% endif %}
         <br>
         {{ form.amount_borrowed.label }}
@@ -24,5 +25,9 @@
         <br>
         {{ form.submit }}
     </form> 
+</div>
+<br>
+<div>
+    <a href="{{url_for('delete_entry', lender=lender )}}"><button type="button">Delete this Entry</button></a>
 </div>
 {% endblock %}

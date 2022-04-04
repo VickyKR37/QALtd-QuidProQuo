@@ -1,3 +1,9 @@
 flask
 flask_sqlalchemy
 pymysql
+flask_wtf
+WTForms
+WTForms-SQLAlchemy
+pytest
+pytest-cov
+flask-bcrypt
