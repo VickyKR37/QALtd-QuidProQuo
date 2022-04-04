@@ -32,10 +32,10 @@ class AddProfile(FlaskForm):
     sumbit = SubmitField('Create Your Profile')
 
 class AddDebtDetails(FlaskForm):
-    lender_id = StringField('Lenders Name')
+    lender_id = SelectField('Lenders Name' choices=[('barclays', 'Barclays'), ('co-operative_bank', 'Co-operative Bank', ('halifax', 'Halifax'), ('hsbc', 'HSBC'), ('lloyds', 'Lloyds'), ('metro', 'Metro'), ('natwest'. 'Natwest')])
     amount_borrowed = IntegerField('Amount Borrowed')
     amount_paid = IntegerField('Amount Paid Back')
-    
+
 
 
 
