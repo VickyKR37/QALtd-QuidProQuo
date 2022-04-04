@@ -30,6 +30,7 @@ def add_debt():
     else:
         return render_template('add_debt.html', form=form)
 
+
 @app.route('/update_debt', methods=[ 'GET', 'POST'])
 def update_debt():
     form = AddDebtDetails()
@@ -41,6 +42,7 @@ def update_debt():
     else:
         return render_template('update_debt.html', form=form)
 
+
 @app.route('/update_profile', methods=[ 'GET', 'POST'])
 def update_profile():
     form = AddProfile()
@@ -51,4 +53,18 @@ def update_profile():
         return render_template('index.html', message="You updated the value of your assets!")
     else:
         return render_template('update_profile.html', form=form)
+
+
+@app.route('/delete_debt_entry')
+def delete_debt_entry():
+    deleted_debt_entry = db.session.query(Loans).filter_by(lender_id=lender_id.first())
+    if deleted_debt_entry:
+        db.session.delete(deleted_debt_entry)
+        db.session.commit()
+        return redirect('/home')
+    else:
+        return redirect('delete_debt_entry')
+
+
+
 
