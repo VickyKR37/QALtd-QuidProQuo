@@ -1,0 +1,35 @@
+{% extends 'base.html'}
+
+{% block title %}
+<title>QuidProQuo - Create Your Profile</title>
+{% endblock %}
+
+{% block content %}
+<h1>Create Your Profile</h1>
+<br>
+<div>
+    <form method='POST' action=''></form>
+        {{ form.hidden_tag() }}
+        {{ form.user_name.label}}
+        {{ form.user_name }}
+        {% if form.user_name.errors}
+        <div>{{ error }}</div>
+        {% endfor %}
+        {% endif %}
+        <br>
+        {{ form.password.label}}
+        {{form.password}}
+        <br>
+        {{ form.property.label}}
+        {{ form.property }}
+        <br>
+        {{ form.cash.label}}
+        {{ form.cash }}
+        <br>
+        {{ form.investments.label }}
+        {{ form.investments }}
+        <br>
+        {{ form.submit }}
+    </form> 
+</div>
+{% endblock %}
