@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-
 {% extends 'base.html' %}
-<html> 
 
 {% block title %}
 <title>QuidProQuo - Update the Details of Your Debt</title>
@@ -16,9 +13,6 @@
         {{ form.hidden_tag() }}
         {{ form.lender_id.label}}
         {{ form.lender_id }}
-        {% if form.user_name.errors %}
-        <div>{{ error }}</div>
-        {% endif %}
         <br>
         {{ form.amount_borrowed.label }}
         {{ form.amount_borrowed }}

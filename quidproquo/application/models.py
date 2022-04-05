@@ -5,18 +5,14 @@ from wtforms.validators import DataRequired, Length, ValidationError
 from wtforms_sqlalchemy.fields import QuerySelectField
 from wtforms.widgets import PasswordInput
 from flask_bcrypt import Bcrypt
-from sqlalchemy import Table, Column, Integer, ForeignKey
-from sqlalchemy.orm import relationship
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
 
 bcrypt = Bcrypt(app)
 
-class Users(db.Model, Base):
+class Users(db.Model):
     __tablename__ = "users"
-    user_name = db.Column(db.String(15), primary_key=True)
-    user_id = db.relationship('user_id', backref='userbr')
+    user_id = db.Column(db.Integer, primary_key=True)
+    user_name = db.Column(db.String(15), unique=True)
+    loans = db.relationship('Loans', backref='user')
     password = db.Column(db.String(15), nullable=False)
     property = db.Column(db.Integer)
     cash = db.Column(db.Integer)
@@ -25,10 +21,10 @@ class Users(db.Model, Base):
     def __repr__(self):
         return 'Choose {}'.format(self.user_name)
 
-class Loans(db.Model, Base):
+class Loans(db.Model):
     __tablename__ = "loans"
     loan_id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     amount_borrowed = db.Column(db.Integer)
     amount_paid = db.column(db.Integer)
     lender_id = db.Column(db.String(20))
@@ -45,6 +41,7 @@ class AddProfile(FlaskForm):
     sumbit = SubmitField('Create Your Profile')
 
 class AddDebtDetails(FlaskForm):
+    # user_id = StringField()
     lender_id = SelectField('Lenders Name', choices=[
         ('barclays', 'Barclays'), 
         ('co-operative_bank', 'Co-operative Bank'), 
