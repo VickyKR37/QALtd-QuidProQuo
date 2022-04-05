@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
 
 {% block title %}
 <title>QuidProQuo - Add the Details of Your Debt</title>
 {% endblock %}
-
+<body>
 {% block content %}
 <div>
 <h1>Add Details of Your Debt</h1>
@@ -11,8 +13,8 @@
 <div>
     <form method='POST' action=''>
         {{ form.hidden_tag() }}
-        {{ form.lender.label}}
-        {{ form.lender }}
+        {{ form.lender_id.label}}
+        {{ form.lender_id }}
         {% if form.user_name.errors %}
         <div>{{ error }}</div>
         {% endif %}
@@ -27,4 +29,6 @@
     </form> 
 </div>
 </div>
+</body>
 {% endblock %}
+</html>

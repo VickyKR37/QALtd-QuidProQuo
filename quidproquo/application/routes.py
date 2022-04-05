@@ -7,11 +7,12 @@ from flask import render_template, redirect, url_for, request
 def home():
     return render_template('index.html')
 
-@app.route('/add_profile', methods=[ 'GET', 'POST'])
+@app.route('/add_profile', methods=['GET', 'POST'])
 def add_profile():
     form = AddProfile()
     if form.validate_on_submit():
-        new_profile = Users(user_name=form.user_name.data, password=form.password.data, property=form.property.data, cash=form.cash.data, investments=form.investments.data)
+        new_profile = Users(user_name=form.user_name.data, password=form.password.data, 
+        property=form.property.data, cash=form.cash.data, investments=form.investments.data)
         db.session.add(new_profile)
         db.session.commit()
         return render_template('index.html', message="You have created your profile!")

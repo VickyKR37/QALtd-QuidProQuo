@@ -7,13 +7,17 @@
 {% block content %}
 <h1>Create Your Profile</h1>
 <br>
-<div>
+<div class="form">
     <form method='POST' action=''>
         {{ form.hidden_tag() }}
         {{ form.user_name.label}}
         {{ form.user_name }}
         {% if form.user_name.errors %}
-        <div>{{ error }}</div>
+        <div class="error">
+            {% for error in form.user_name.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
         {% endif %}
         <br>
         {{ form.password.label}}

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         {% block title %}
@@ -8,16 +9,20 @@
     <body>
         <nav>
             <ul>
+                <li><a href="/home">Home</a></li>
+                <br>
                 <li><a href="/add_profile"> Create Profile and Enter Information About Aseets</a></a></li>
                 <br>
                 <li><a href='/add_debt'>Enter Debt Info</a></li>
                 <br>
                 <li><a href='/update_profile'>View and/or Update Assets</a></li>
                 <br>
-                <li><a href='/update_debt'></a>View and/or Update Debt</a></li>
+                <li><a href='/update_debt'>View and/or Update Debt</a></li>
                 <br>
                 <li><a href='/view_networth'>View Networth</a></li>
             </ul>
         </nav>
+        {% block body %} {% endblock %}
     </body>
+
 </html>
