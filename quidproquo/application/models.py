@@ -9,8 +9,8 @@ from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
 class Users(db.Model):
-    user_id = db.Column(db.relationship('user_id', backref='userbr'))
-    user_name = db.column(db.String(15), primary_key=True)
+    user_name = db.Column(db.String(15), primary_key=True)
+    user_id = db.relationship('user_id', backref='userbr')
     password = db.Column(db.String(15), nullable=False)
     property = db.Column(db.Integer)
     cash = db.Column(db.Integer)
@@ -20,14 +20,14 @@ class Users(db.Model):
         return 'Choose {}'.format(self.user_name)
 
 class Loans(db.Model):
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id', nullable=False)))
-    loan_id = db.Column(db.Integer, primary_key=True, nullable=False)
+    loan_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     amount_borrowed = db.Column(db.Integer)
     amount_paid = db.column(db.Integer)
     lender_id = db.Column(db.String(20))
 
     def __repr__(self):
-        retrun 'Choose {}'.formal(self.lender_id)
+        return 'Choose {}'.format(self.lender_id)
 
 class AddProfile(FlaskForm):
     user_name = StringField('Username')
