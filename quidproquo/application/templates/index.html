@@ -8,4 +8,12 @@
 <h1>Welcome to QuidProQuo</h1>
 <h2>QuidProQuo - Calculate and Track Your Networth</h2>
 <p>Please use the navigation menu to get around the app!</p>
+
+<div class="profiles">
+    <ol>
+        {% for i in range(0, len) %} 
+        <li>{{Users.user_id[i]}}</li>
+        {% endfor %}
+    </ol>
+</div>
 {% endblock %}

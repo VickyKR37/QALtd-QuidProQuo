@@ -5,7 +5,7 @@ from flask import render_template, redirect, url_for, request
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('index.html')
+    return render_template('index.html', len=len(Users.user_id) )
 
 @app.route('/add_profile', methods=['GET', 'POST'])
 def add_profile():
@@ -32,6 +32,22 @@ def add_debt():
         return render_template('add_debt.html', message="Try again", form=form)
 
 
+
+@app.route('/update_profile/<int:user_id>', methods=[ 'GET', 'POST'])
+def update_profile(user_id):
+    form = AddProfile()
+    updated_profile = Users.query.filter_by(user_id=user_id).first()
+    if request.method == 'POST': 
+        if updated_profile:
+            updated_profile.property = form.property.data
+            updated_profile.cash = form.cash.data
+            updated_profile.investments = form.investments.data
+            db.session.commit()
+            return render_template('index.html', message="You updated the value of your assets!")
+    else:
+        return render_template('update_profile.html', form=form)
+
+
 @app.route('/update_debt', methods=[ 'GET', 'POST'])
 def update_debt():
     form = AddDebtDetails()
@@ -44,27 +60,17 @@ def update_debt():
         return render_template('update_debt.html', form=form)
 
 
-@app.route('/update_profile', methods=[ 'GET', 'POST'])
-def update_profile():
-    form = AddProfile()
-    if form.validate_on_submit:
-        update_assets = Users(property=form.property.data, cash=form.cash.data, investments=form.investments.data)
-        db.session.add(update_profile)
-        db.session.commit()
-        return render_template('index.html', message="You updated the value of your assets!")
-    else:
-        return render_template('update_profile.html', form=form)
 
 
-@app.route('/delete_debt_entry')
-def delete_debt_entry():
-    deleted_debt_entry = db.session.query(Loans).filter_by(lender_id=lender_id.first())
-    if deleted_debt_entry:
-        db.session.delete(deleted_debt_entry)
-        db.session.commit()
-        return redirect('/home')
-    else:
-        return redirect('delete_debt_entry')
+# @app.route('/delete_debt_entry')
+# def delete_debt_entry():
+#     deleted_debt_entry = db.session.query(Loans)
+#     if 
+#         db.session.delete(deleted_debt_entry)
+#         db.session.commit()
+#         return redirect('/home')
+#     else:
+#         return redirect('delete_debt_entry')
 
 
 

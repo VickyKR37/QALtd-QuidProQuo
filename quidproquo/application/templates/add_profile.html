@@ -12,13 +12,6 @@
         {{ form.hidden_tag() }}
         {{ form.user_name.label}}
         {{ form.user_name }}
-        {% if form.name.errors %}
-        <div class='error'>
-            {% for error in form.name.errors %}
-            <span>{{ error }}</span>
-            {% endfor %}
-        </div>
-        {% endif %}
         <br>
         {{ form.password.label}}
         {{ form.password }}

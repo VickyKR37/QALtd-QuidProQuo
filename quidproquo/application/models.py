@@ -9,7 +9,6 @@ from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
 class Users(db.Model):
-    __tablename__ = "users"
     user_id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(15), unique=True)
     loans = db.relationship('Loans', backref='user')
@@ -22,7 +21,6 @@ class Users(db.Model):
         return 'Choose {}'.format(self.user_name)
 
 class Loans(db.Model):
-    __tablename__ = "loans"
     loan_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     amount_borrowed = db.Column(db.Integer)
@@ -38,7 +36,7 @@ class AddProfile(FlaskForm):
     property = IntegerField('Value of Property')
     cash = IntegerField('Value of Cash')
     investments = IntegerField('Value of Investmensts')
-    submit = SubmitField('Create your profile')
+    submit = SubmitField('Create your')
 
 
 class AddDebtDetails(FlaskForm):
