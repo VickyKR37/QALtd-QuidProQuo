@@ -4,7 +4,7 @@
 <title>QuidProQuo - Create Your Profile</title>
 {% endblock %}
 
-{% block content %}
+{% block body %}
 <h1>Create Your Profile</h1>
 <br>
 <div class="form">
@@ -12,9 +12,9 @@
         {{ form.hidden_tag() }}
         {{ form.user_name.label}}
         {{ form.user_name }}
-        {% if form.user_name.errors %}
-        <div class="error">
-            {% for error in form.user_name.errors %}
+        {% if form.name.errors %}
+        <div class='error'>
+            {% for error in form.name.errors %}
             <span>{{ error }}</span>
             {% endfor %}
         </div>

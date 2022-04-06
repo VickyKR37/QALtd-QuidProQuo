@@ -38,10 +38,11 @@ class AddProfile(FlaskForm):
     property = IntegerField('Value of Property')
     cash = IntegerField('Value of Cash')
     investments = IntegerField('Value of Investmensts')
-    sumbit = SubmitField('Create Your Profile')
+    submit = SubmitField('Create your profile')
+
 
 class AddDebtDetails(FlaskForm):
-    # user_id = StringField()
+    user_name = StringField('Username')
     lender_id = SelectField('Lenders Name', choices=[
         ('barclays', 'Barclays'), 
         ('co-operative_bank', 'Co-operative Bank'), 

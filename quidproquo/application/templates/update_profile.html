@@ -5,13 +5,15 @@
 <title>QuidProQuo - Update Your Profile</title>
 {% endblock %}
 
-{% block content %}
+{% block body %}
 <div>
 <h1>Create Your Update</h1>
 <br>
 <div>
     <form method='POST' action=''>
         {{ form.hidden_tag() }}
+        {{ form.user_name.label }}
+        {{ form.user_name }}
         {{ form.property.label}}
         {{ form.property }}
         <br>

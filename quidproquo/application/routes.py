@@ -17,7 +17,7 @@ def add_profile():
         db.session.commit()
         return render_template('index.html', message="You have created your profile!")
     else:
-        return render_template('add_profile.html', form=form)
+        return render_template('add_profile.html', message="Try again", form=form)
 
 
 @app.route('/add_debt', methods=[ 'GET', 'POST'])
@@ -29,7 +29,7 @@ def add_debt():
         db.session.commit()
         return render_template('index.html', message="Details of debt added!")
     else:
-        return render_template('add_debt.html', form=form)
+        return render_template('add_debt.html', message="Try again", form=form)
 
 
 @app.route('/update_debt', methods=[ 'GET', 'POST'])

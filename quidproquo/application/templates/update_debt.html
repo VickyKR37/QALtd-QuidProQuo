@@ -4,13 +4,15 @@
 <title>QuidProQuo - Update the Details of Your Debt</title>
 {% endblock %}
 
-{% block content %}
+{% block body %}
 <div>
 <h1>Update the Details of Your Debt</h1>
 <br>
 <div>
     <form method='POST' action=''>
         {{ form.hidden_tag() }}
+        {{ form.user_name.label }}
+        {{ form.user_name }}
         {{ form.lender_id.label}}
         {{ form.lender_id }}
         <br>
