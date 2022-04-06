@@ -36,7 +36,7 @@ class AddProfile(FlaskForm):
     property = IntegerField('Value of Property')
     cash = IntegerField('Value of Cash')
     investments = IntegerField('Value of Investmensts')
-    submit = SubmitField('Create your')
+    submit = SubmitField('Create your Profile')
 
 
 class AddDebtDetails(FlaskForm):

@@ -5,7 +5,9 @@ from flask import render_template, redirect, url_for, request
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('index.html', len=len(Users.user_id) )
+    count = Users.query.count()
+    no_users = Users.query.all()
+    return render_template('index.html', count=count, no_users=no_users)
 
 @app.route('/add_profile', methods=['GET', 'POST'])
 def add_profile():
