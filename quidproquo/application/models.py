@@ -24,23 +24,23 @@ class Loans(db.Model):
     loan_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     amount_borrowed = db.Column(db.Integer)
-    amount_paid = db.column(db.Integer)
     lender_id = db.Column(db.String(20))
 
     def __repr__(self):
         return 'Choose {}'.format(self.lender_id)
 
 class AddProfile(FlaskForm):
-    user_name = StringField('Username')
+    user_id = IntegerField('User ID')
+    user_name = StringField('User Name')
     password = StringField('Password')
     property = IntegerField('Value of Property')
     cash = IntegerField('Value of Cash')
     investments = IntegerField('Value of Investmensts')
-    submit = SubmitField('Create your Profile')
+    submit = SubmitField('Submit')
 
 
 class AddDebtDetails(FlaskForm):
-    user_name = StringField('Username')
+    user_id = IntegerField('User ID')
     lender_id = SelectField('Lenders Name', choices=[
         ('barclays', 'Barclays'), 
         ('co-operative_bank', 'Co-operative Bank'), 
@@ -49,9 +49,8 @@ class AddDebtDetails(FlaskForm):
         ('lloyds', 'Lloyds'), 
         ('metro', 'Metro'), 
         ('natwest', 'Natwest')])
-    amount_borrowed = IntegerField('Amount Borrowed')
-    amount_paid = IntegerField('Amount Paid Back')
-    submit = SubmitField('Add the details of your debt')
+    amount_borrowed = IntegerField('Amount Owed')
+    submit = SubmitField('Sumbit')
 
 
 

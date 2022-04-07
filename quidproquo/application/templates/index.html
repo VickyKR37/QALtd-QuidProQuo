@@ -3,16 +3,20 @@
 {% block title %}
 <title>QuidProQuo - Home</title>
 {% endblock %}
-
+<br>
 {% block body %}
 <h1>Welcome to QuidProQuo</h1>
 <h2>QuidProQuo - Calculate and Track Your Networth</h2>
-<p>Please use the navigation menu to get around the app!</p>
+<p>Please use the navigation menu to create your profile and add your debt or choose from the buttons beside your profile to update your profile and the value of your assets, update your debt or view your net worth!</p>
 
 <div class="profiles">
     <ol>
-        {% for user in all_users %} 
-        <li>{{user.user_name}}</li>
+        {% for user in all_users %}
+        <li>{{user.user_name}}. User ID is {{user.user_id}}</li>
+        <a href='/update_profile/{{user.user_id}}'><input type="button" value="Update profile"></a>
+        <a href='/update_debt/{{user.user_id}}'><input type="button" value="Update Debt"></a>
+        <a href="/view_networth/{{user.user_id}}"><input type="button" value="View Networth"></a>
+        <a href='/delete_profile/{{user.user_id}}'><input type="button" value="Delete Profile"></a>
         {% endfor %}
     </ol>
 </div>
